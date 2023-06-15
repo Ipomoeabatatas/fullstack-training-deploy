@@ -1,0 +1,9 @@
+<%- include('header.ejs'); %>
+<form method="POST">
+    <div class="container">
+        <h1>Add new Artist</h1>
+        <%- include('artist-form.ejs', { artist: { name: "" , birth_year: "" , country: "" }}); %>
+            <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+    <%- include('footer.ejs'); %>
