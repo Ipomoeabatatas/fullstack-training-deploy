@@ -63,7 +63,8 @@ const dbConfig = {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT
 };
 
 async function main() {
@@ -125,7 +126,7 @@ async function main() {
         app.post('/register', async (req, res) => {
             try {
                 const hashedPassword = await bcrypt.hash(req.body.password, 10);
-                await db.query('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', [req.body.username, hashedPassword, req.body.email]);
+                await db.query('INSERT INTO users (username, password, email, role_id) VALUES (?, ?, ?, 4)', [req.body.username, hashedPassword, req.body.email]);
                 res.redirect('/login');
             } catch (e) {
                 console.log(e);
