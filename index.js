@@ -10,10 +10,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+
+app.use(cors());
 
 // use the public folder for static files
 app.use(express.static('public'));
